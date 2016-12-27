@@ -1,7 +1,9 @@
+import { hashHistory,browserHistory,Router, Route, Link,IndexRoute } from 'react-router';
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import Main from './components/Main'
+import Wallball from './components/Wallball'
 class App extends Component {
 
   constructor(props) {
@@ -24,7 +26,7 @@ class App extends Component {
 
                 this.setState({rng: + data})
                 console.log(data);
-              
+
           })
 event.preventDefault();
       }
@@ -32,7 +34,10 @@ event.preventDefault();
 
   render() {
     return (
-      <div className="App">
+  <div className="App">
+
+
+
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
@@ -43,7 +48,14 @@ event.preventDefault();
         <form onSubmit={this.handleSubmit}>
             <input type="submit" value="Submit"/>
         </form>
+        <Router history={browserHistory}>
 
+             <Route path='/' component={Main}>
+                  <Route path='/Wallball' component={Wallball}></Route>
+
+
+             </Route>
+           </Router>
 
       </div>
     );
